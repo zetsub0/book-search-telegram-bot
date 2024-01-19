@@ -36,17 +36,17 @@ func (b *Bot) handleCommand(message *tgbotapi.Message) error {
 func (b *Bot) handleMessage(message *tgbotapi.Message) {
 
 	tm := time.Unix(int64(message.Date), 0)
-	b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, "Поиск книги "+message.Text))
+	b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, `Поиск книги "`+message.Text+`"`))
 	time.Sleep(200 * time.Millisecond)
 	log.Printf("[%s] %s \t[%s]", message.From.UserName, message.Text, tm)
 	links := stringToLink.StringToLink(message.Text)
+	message.Text = ""
 	for key, val := range links {
-		message.Text = "[" + key + "]" + "(" + val + ")"
+		message.Text += "[" + key + "]" + "(" + val + ")\n"
 		time.Sleep(50 * time.Millisecond)
-		msg := tgbotapi.NewMessage(message.Chat.ID, message.Text)
-		msg.ParseMode = tgbotapi.ModeMarkdown
-
-		b.bot.Send(msg)
 	}
+	msg := tgbotapi.NewMessage(message.Chat.ID, message.Text)
+	msg.ParseMode = tgbotapi.ModeMarkdown
+	b.bot.Send(msg)
 
 }

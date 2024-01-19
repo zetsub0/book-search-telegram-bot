@@ -14,7 +14,5 @@ COPY --from=builder /usr/local/bin/bot /usr/local/bin/
 
 WORKDIR /usr/local/bin
 
-COPY main.yaml .
-
 CMD ["bot"]
 

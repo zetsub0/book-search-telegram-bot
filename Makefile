@@ -1,8 +1,7 @@
 .PHONY:
-.SILENT:
 
 build:
-	go build -o ./.bin/bot cmd/bot/main.go
+	@docker build -t $(TAG) .
 
-run: build
-	./.bin/bot
+run:
+	@docker run -e BOT_API=$(TOKEN) $(TAG)

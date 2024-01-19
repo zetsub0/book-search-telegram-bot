@@ -12,7 +12,7 @@ type UserMessageTracker struct {
 
 type RateLimiter struct {
 	UserMessageMap map[int]*UserMessageTracker
-	Mutex          sync.Mutex
+	Mutex          sync.RWMutex
 }
 
 func NewRateLimiter() *RateLimiter {

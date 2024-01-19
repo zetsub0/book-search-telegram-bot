@@ -2,27 +2,19 @@ package main
 
 import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/go-yaml/yaml"
 	"github.com/zetsub0/book-search-telegram-bot/pkg/telegram"
 	"log"
 	"os"
 )
 
 type Conf struct {
-	Token string `yaml:"token"`
+	Token string
 }
 
 var conf Conf
 
 func init() {
-	yamlFile, err := os.ReadFile("main.yaml")
-	if err != nil {
-		panic(err)
-	}
-	err = yaml.Unmarshal(yamlFile, &conf)
-	if err != nil {
-		panic(err)
-	}
+	conf.Token = getEnv("BOT_API", "")
 
 }
 
@@ -37,4 +29,12 @@ func main() {
 	if err := telegramBot.Start(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func getEnv(key string, defaultVal string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return value
+	}
+
+	return defaultVal
 }
