@@ -1,0 +1,8 @@
+Dockerfile
+Makefile
+LICENSE
+.gitignore
+.idea
+.git
+.cache
+.bin
