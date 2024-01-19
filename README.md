@@ -13,7 +13,6 @@
 - Docker
 - Go 1.21
 - [telegram-bot-api v5](https://github.com/go-telegram-bot-api/telegram-bot-api)
-- [go yaml](https://github.com/go-yaml/yaml)
 
 # Ограничения
 1 сообщение в 10 секунд.
