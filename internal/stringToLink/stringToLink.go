@@ -29,6 +29,11 @@ var (
 	wb         = "WildBerries"
 	megaMarket = "МегаМаркет"
 	marketYa   = "Яндекс Маркет"
+	eksmo      = "Издательство Эксмо"
+	ast        = "Издательство АСТ"
+	bombora    = "Издательство Бомбора"
+	alpina     = "Издательство Альпина"
+	mif        = "Издательство МИФ"
 )
 
 func StringToLink(bookName string) map[string]string {
@@ -51,6 +56,11 @@ func StringToLink(bookName string) map[string]string {
 	links[avito] = "https://www.avito.ru/all/knigi_i_zhurnaly?cd=1&q=" + plusString
 	links[piter] = "https://www.piter.com/collection/all?q=" + plusString
 	links[dmk] = "https://dmkpress.com/search/product/?search_string=" + plusString
+	links[eksmo] = "https://eksmo.ru/search/?q=" + plusString
+	links[ast] = "https://ast.ru/search/?q=" + plusString
+	links[bombora] = "https://bombora.ru/books/search/?q=" + plusString
+	links[alpina] = "https://alpinabook.ru/search/?q" + plusString
+	links[mif] = "https://www.mann-ivanov-ferber.ru/book/search?query=" + plusString
 
 	links[chitaiG] = "https://www.chitai-gorod.ru/search?phrase=" + percString
 	links[wb] = "https://www.wildberries.ru/catalog/0/search.aspx?search=" + percString
